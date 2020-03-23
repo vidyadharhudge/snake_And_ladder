@@ -1,4 +1,4 @@
-#!/bin/bash -x 
+#!/bin/bash 
 echo "welcome to Snake and ladder game"
 
 #CONSTANT
@@ -23,17 +23,26 @@ option=$((RANDOM%3 +1))
 
    2)
        echo "ladder"
-       current_Poistion=$((current_Poistion+diceRoll))
+       Current_Poistion=$((current_Poistion+diceRoll))
+       if [[ $Current_Poistion -gt $END_POISTION ]]
+       then
+            current_Poistion=$current_Poistion
+       else
+            current_Poistion=$Current_Poistion
+       fi 
+        echo "ladder is:$current_Poistion"
        ;;
 
    3)
        echo "snake"
-       if [[ $diceRoll -gt $current_Poistion ]]
+       Current_Poistion=$((current_Poistion-diceRoll))
+       if [[ $Current_Poistion -lt $START_POISTION ]]
        then
        current_Poistion=$current_Poistion
        else
-       current_Poistion=$((current_Poistion-diceRoll))
+       current_Poistion=$Current_Poistion
        fi
+           echo "snake is:$current_Poistion"
        ;;
 
    esac
