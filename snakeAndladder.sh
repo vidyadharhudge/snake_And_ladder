@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash -x  
 echo "welcome to Snake and ladder game"
 
 #CONSTANT
@@ -7,7 +7,7 @@ END_POISTION=100
 
 #VARIBALE
 current_Poistion=0
-
+no_Of_die=0
 echo "player rolls the die and get the numbers"
 while [[ $current_Poistion -lt $END_POISTION ]]
 do
@@ -24,12 +24,16 @@ option=$((RANDOM%3 +1))
    2)
        echo "ladder"
        Current_Poistion=$((current_Poistion+diceRoll))
+       no_Of_die=$((no_Of_die+1))
        if [[ $Current_Poistion -gt $END_POISTION ]]
        then
             current_Poistion=$current_Poistion
        else
             current_Poistion=$Current_Poistion
        fi 
+        array_Dice[$no_Of_die]=$current_Poistion
+        echo "${!array_Dice[@]}"
+        echo " ${array_Dice[@]}"
         echo "ladder is:$current_Poistion"
        ;;
 
